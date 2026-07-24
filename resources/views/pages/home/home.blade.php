@@ -1,5 +1,5 @@
 {{-- ═══════════════════════════════════════════════════════════
-     LINKINGROAD — Home Page (dark Material Design theme)
+     LINKINGROAD Home Page (dark Material Design theme)
      Livewire component: home.php
 ═══════════════════════════════════════════════════════════ --}}
 
@@ -16,13 +16,13 @@
 
         {{-- Headline --}}
         <h1 class="font-bold text-3xl sm:text-5xl lg:text-[72px] tracking-[-0.04em] leading-[1.1] mb-5 sm:mb-6 max-w-4xl mx-auto text-on-surface">
-            Turn Every Comment <br />
-            <span class="gradient-text italic">Into Revenue</span>
+            The Future of Social <br />
+            <span class="gradient-text italic inline-block pr-2 pb-1">Automation is Here</span>
         </h1>
 
         {{-- Sub-headline --}}
         <p class="text-base sm:text-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed mb-8 sm:mb-12">
-            The ultimate AI social automation platform for modern growth teams. Automate Instagram and Facebook comment-to-DM engagement effortlessly.
+            We're putting the finishing touches on something big. LINKINGROAD is an AI-powered platform that turns every Instagram & Facebook comment into real revenue automatically. Be the first to experience it.
         </p>
 
         {{-- Waitlist form --}}
@@ -105,7 +105,7 @@
                     We're on a mission to replace clunky, fragmented 2015-era tools with a single, high-precision automation engine built for <strong class="text-on-surface">Instagram & Facebook creators</strong>.
                 </p>
                 <p class="text-on-surface-variant text-base leading-relaxed">
-                    Our mission: give you a cinematic canvas to build automations that feel like magic — turning your audience into a loyal community while you sleep.
+                    Our mission: give you a cinematic canvas to build automations that feel like magic turning your audience into a loyal community while you sleep.
                 </p>
                 <div class="grid grid-cols-2 gap-4 pt-2">
                     <div class="glass-card bento-card rounded-2xl p-4 flex items-start gap-3">
@@ -304,7 +304,7 @@
                 <div>
                     <span class="text-[11px] uppercase tracking-wider font-bold text-tertiary px-3 py-1 rounded-full mb-3 inline-block" style="background:rgba(196,193,251,0.1);">24/7 AI Agent</span>
                     <h3 class="font-bold text-xl text-on-surface mb-2">Unified AI Inbox</h3>
-                    <p class="text-on-surface-variant text-sm leading-relaxed max-w-lg">Routes messages, automates follow-ups, handles customer service from a single dashboard. Define goals — AI builds the optimal path.</p>
+                    <p class="text-on-surface-variant text-sm leading-relaxed max-w-lg">Routes messages, automates follow-ups, handles customer service from a single dashboard. Define goals AI builds the optimal path.</p>
                 </div>
             </div>
         </div>
