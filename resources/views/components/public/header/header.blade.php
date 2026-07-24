@@ -1,13 +1,55 @@
 <header class="fixed top-0 w-full z-50 bg-surface/50 backdrop-blur-lg border-b border-white/5 shadow-sm">
-    <div class="flex items-center justify-between h-16 px-margin-mobile md:px-gutter max-w-container-max mx-auto">
-        <img alt="LINKINGROAD Logo" class="h-8 w-auto" src="{{ asset('logo.png') }}"/>
-        <nav class="hidden md:flex gap-6">
-            <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Features</a>
-            <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Solutions</a>
-            <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Pricing</a>
+    <div class="flex items-center justify-between h-16 px-5 md:px-8 max-w-[1200px] mx-auto">
+
+        {{-- Logo --}}
+        <img alt="LINKINGROAD Logo" class="h-8 w-auto" src="{{ asset('logo.png') }}" />
+
+        {{-- Desktop Nav --}}
+        <nav class="hidden md:flex items-center gap-7">
+            <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors" href="#solutions">Features</a>
+            <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors" href="#solutions">Solutions</a>
+            <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors" href="#case-studies">Case Studies</a>
         </nav>
-        <div>
-            <a class="bg-secondary-container hover:bg-secondary-container/90 text-on-secondary-container px-stack-lg py-2 px-3 rounded-full font-label-md text-label-md transition-all primary-glow" href="#waitlist">Join Waitlist</a>
+
+        {{-- Desktop CTA --}}
+        <div class="hidden md:block">
+            <a class="bg-secondary-container hover:bg-secondary-container/80 text-on-secondary-container px-5 py-2 rounded-full text-sm font-bold transition-all primary-glow"
+               href="#waitlist">Join Waitlist</a>
         </div>
+
+        {{-- Mobile Hamburger --}}
+        <button
+            x-data="{ open: false }"
+            @click="open = !open"
+            x-ref="menuBtn"
+            class="md:hidden flex items-center justify-center w-9 h-9 rounded-lg glass-card text-on-surface-variant hover:text-primary transition-colors"
+            aria-label="Toggle menu"
+            x-on:click.outside="open = false">
+            <i class="ri-menu-3-line text-xl" x-show="!open"></i>
+            <i class="ri-close-line text-xl" x-show="open" x-cloak></i>
+
+            {{-- Mobile Drawer --}}
+            <div
+                x-show="open"
+                x-cloak
+                x-transition:enter="transition ease-out duration-200"
+                x-transition:enter-start="opacity-0 -translate-y-2"
+                x-transition:enter-end="opacity-100 translate-y-0"
+                x-transition:leave="transition ease-in duration-150"
+                x-transition:leave-start="opacity-100 translate-y-0"
+                x-transition:leave-end="opacity-0 -translate-y-2"
+                class="absolute top-16 left-0 right-0 w-full glass-card border-b border-white/5 shadow-2xl px-5 py-6 flex flex-col gap-4"
+                @click.stop>
+                <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors py-2 border-b border-white/5"
+                   href="#solutions" @click="open = false">Features</a>
+                <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors py-2 border-b border-white/5"
+                   href="#solutions" @click="open = false">Solutions</a>
+                <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors py-2 border-b border-white/5"
+                   href="#case-studies" @click="open = false">Case Studies</a>
+                <a class="bg-primary-container text-on-primary-container px-5 py-3 rounded-xl text-sm font-bold text-center hover:scale-[1.01] transition-transform primary-glow mt-2"
+                   href="#waitlist" @click="open = false">Join Waitlist</a>
+            </div>
+        </button>
+
     </div>
 </header>

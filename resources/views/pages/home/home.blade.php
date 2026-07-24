@@ -6,22 +6,22 @@
 <div class="w-full relative z-10">
 
     {{-- ─── 1. HERO ──────────────────────────────────────────── --}}
-    <section class="max-w-[1200px] mx-auto px-5 md:px-6 text-center pt-32 pb-24">
+    <section class="max-w-[1200px] mx-auto px-5 md:px-6 text-center pt-28 sm:pt-32 pb-16 sm:pb-24">
 
         {{-- Badge --}}
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card mb-8 animate-fade-in">
+        <div class="inline-flex mt-6 items-center gap-2 px-4 py-1.5 rounded-full glass-card mb-8 animate-fade-in">
             <span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
-            <span class="text-xs font-bold text-primary tracking-widest uppercase">🚀 Coming Soon — Join Early Access Waitlist</span>
+            <span class="text-xs font-bold text-primary tracking-widest uppercase">🚀 Coming Soon</span>
         </div>
 
         {{-- Headline --}}
-        <h1 class="font-bold text-4xl sm:text-6xl lg:text-[72px] tracking-[-0.04em] leading-[1.1] mb-6 max-w-4xl mx-auto text-on-surface">
+        <h1 class="font-bold text-3xl sm:text-5xl lg:text-[72px] tracking-[-0.04em] leading-[1.1] mb-5 sm:mb-6 max-w-4xl mx-auto text-on-surface">
             Turn Every Comment <br />
             <span class="gradient-text italic">Into Revenue</span>
         </h1>
 
         {{-- Sub-headline --}}
-        <p class="text-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed mb-12">
+        <p class="text-base sm:text-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed mb-8 sm:mb-12">
             The ultimate AI social automation platform for modern growth teams. Automate Instagram and Facebook comment-to-DM engagement effortlessly.
         </p>
 
@@ -76,9 +76,9 @@
 
 
         {{-- Trusted by logos --}}
-        <div class="mt-16 border-t border-white/5 pt-10">
+        <div class="mt-16  pt-6">
             <p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant/50 mb-6">Trusted By Next-Generation Growth Teams</p>
-            <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-14 font-bold text-on-surface/40 text-lg sm:text-xl">
+            <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-14 font-bold text-on-surface/40 text-base sm:text-xl">
                 <span class="flex items-center gap-2 hover:text-on-surface/70 transition-colors"><i class="ri-building-2-line text-primary/60"></i> Acme Corp</span>
                 <span class="flex items-center gap-2 hover:text-on-surface/70 transition-colors"><i class="ri-global-line text-secondary/60"></i> GlobalTech</span>
                 <span class="flex items-center gap-2 hover:text-on-surface/70 transition-colors"><i class="ri-cpu-line text-tertiary/60"></i> Nexus</span>
@@ -90,6 +90,7 @@
     </section>
 
     {{-- ─── 2. OUR STORY ──────────────────────────────────────── --}}
+   {{-- 
     <section id="story" class="max-w-[1200px] mx-auto px-5 md:px-6 py-24 border-t border-white/5">
         <div class="grid md:grid-cols-2 gap-12 items-center">
             <div class="space-y-6">
@@ -128,7 +129,6 @@
                 </div>
             </div>
 
-            {{-- Stats grid (hardcoded — no dynamic classes) --}}
             <div class="grid grid-cols-2 gap-6">
                 <div class="glass-card bento-card rounded-3xl p-6 sm:p-8 text-center">
                     <i class="ri-flashlight-line text-3xl text-primary mb-2 block"></i>
@@ -153,8 +153,9 @@
             </div>
         </div>
     </section>
+   --}}
 
-    {{-- ─── 3. COMPARISON ─────────────────────────────────────── --}}
+    {{-- ─── 3. COMPARISON ─────────────────────────────────────── 
     <section id="features" class="max-w-[1200px] mx-auto px-5 md:px-6 py-24 border-t border-white/5">
         <div class="text-center max-w-3xl mx-auto mb-16">
             <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card border border-white/10 text-xs font-bold text-secondary mb-4">
@@ -250,6 +251,7 @@
             </div>
         </div>
     </section>
+    --}}
 
     {{-- ─── 4. PLATFORM FEATURES (Bento) ──────────────────────── --}}
     <section id="solutions" class="max-w-[1200px] mx-auto px-5 md:px-6 py-24 border-t border-white/5">
@@ -261,9 +263,9 @@
             <p class="text-on-surface-variant text-base">Engineered for Instagram & Facebook creators, brands, and agencies.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 md:gap-6 mb-5 md:mb-6">
             {{-- Comment-to-DM --}}
-            <div class="md:col-span-2 bento-card glass-card rounded-3xl p-8 flex flex-col justify-between h-[320px]">
+            <div class="sm:col-span-2 md:col-span-2 bento-card glass-card rounded-3xl p-6 md:p-8 flex flex-col justify-between min-h-[260px] md:h-[320px]">
                 <div>
                     <i class="ri-chat-3-fill text-3xl text-primary mb-4 block"></i>
                     <span class="text-[11px] uppercase tracking-wider font-bold text-primary px-3 py-1 rounded-full mb-3 inline-block" style="background:rgba(247,81,161,0.1);">Core Feature</span>
@@ -276,13 +278,13 @@
             </div>
 
             {{-- Stat --}}
-            <div class="bento-card glass-card rounded-3xl p-8 h-[320px] flex flex-col justify-center text-center" style="background:linear-gradient(135deg,rgba(247,81,161,0.08) 0%,transparent 100%);">
+            <div class="sm:col-span-2 md:col-span-1 bento-card glass-card rounded-3xl p-6 md:p-8 min-h-[200px] md:h-[320px] flex flex-col justify-center text-center" style="background:linear-gradient(135deg,rgba(247,81,161,0.08) 0%,transparent 100%);">
                 <div class="text-5xl font-bold gradient-text mb-2">99.9%</div>
                 <p class="text-sm font-semibold text-on-surface-variant">Uptime & Reliability</p>
             </div>
 
             {{-- Visual Workflow --}}
-            <div class="bento-card glass-card rounded-3xl p-8 h-[320px] flex flex-col justify-between">
+            <div class="bento-card glass-card rounded-3xl p-6 md:p-8 min-h-[260px] md:h-[320px] flex flex-col justify-between">
                 <div>
                     <i class="ri-bar-chart-box-fill text-3xl text-secondary mb-4 block"></i>
                     <span class="text-[11px] uppercase tracking-wider font-bold text-secondary px-3 py-1 rounded-full mb-3 inline-block" style="background:rgba(211,187,255,0.1);">No-Code Canvas</span>
@@ -295,7 +297,7 @@
             </div>
 
             {{-- Unified AI Inbox --}}
-            <div class="md:col-span-2 bento-card glass-card rounded-3xl p-8 h-[320px] relative overflow-hidden flex flex-col justify-end">
+            <div class="sm:col-span-2 md:col-span-2 bento-card glass-card rounded-3xl p-6 md:p-8 min-h-[240px] md:h-[320px] relative overflow-hidden flex flex-col justify-end">
                 <div class="absolute top-6 right-6 text-on-surface-variant/10">
                     <i class="ri-robot-2-fill text-8xl"></i>
                 </div>
@@ -329,7 +331,7 @@
    
 
     {{-- ─── 6. CASE STUDIES ───────────────────────────────────── --}}
-    <section class="max-w-[1200px] mx-auto px-5 md:px-6 py-24 border-t border-white/5">
+    <section id="case-studies" class="max-w-[1200px] mx-auto px-5 md:px-6 py-24 border-t border-white/5">
         <div class="text-center max-w-3xl mx-auto mb-16">
             <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card border border-white/10 text-xs font-bold text-primary mb-4">
                 <i class="ri-trophy-fill text-primary-container"></i> CASE STUDIES
@@ -386,95 +388,8 @@
         </div>
     </section>
 
-    {{-- ─── 7. TESTIMONIALS ───────────────────────────────────── --}}
-    <section class="max-w-[1200px] mx-auto px-5 md:px-6 py-24 border-t border-white/5">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <h2 class="font-bold text-3xl sm:text-4xl text-on-surface mb-3">Loved By Growth Teams</h2>
-            <p class="text-on-surface-variant text-sm">See what creators and founders say about LINKINGROAD.</p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bento-card glass-card rounded-3xl p-8">
-                <div class="text-amber-400 mb-4 flex items-center gap-0.5">
-                    <i class="ri-star-fill text-sm"></i><i class="ri-star-fill text-sm"></i><i class="ri-star-fill text-sm"></i><i class="ri-star-fill text-sm"></i><i class="ri-star-fill text-sm"></i>
-                </div>
-                <p class="text-on-surface-variant text-sm italic mb-6 leading-relaxed">"LINKINGROAD completely changed how we handle inbound leads. We generate 3x more calls directly from Instagram comments now."</p>
-                <div class="font-bold text-on-surface text-sm">Sarah Jenkins</div>
-                <div class="text-xs text-on-surface-variant">Growth Head, StartupX</div>
-            </div>
-            <div class="bento-card glass-card rounded-3xl p-8">
-                <div class="text-amber-400 mb-4 flex items-center gap-0.5">
-                    <i class="ri-star-fill text-sm"></i><i class="ri-star-fill text-sm"></i><i class="ri-star-fill text-sm"></i><i class="ri-star-fill text-sm"></i><i class="ri-star-fill text-sm"></i>
-                </div>
-                <p class="text-on-surface-variant text-sm italic mb-6 leading-relaxed">"The visual workflow builder is lightyears ahead of anything else. It feels like magic when you see the automations run."</p>
-                <div class="font-bold text-on-surface text-sm">David Chen</div>
-                <div class="text-xs text-on-surface-variant">Founder, CreatorBrand</div>
-            </div>
-            <div class="bento-card glass-card rounded-3xl p-8">
-                <div class="text-amber-400 mb-4 flex items-center gap-0.5">
-                    <i class="ri-star-fill text-sm"></i><i class="ri-star-fill text-sm"></i><i class="ri-star-fill text-sm"></i><i class="ri-star-fill text-sm"></i><i class="ri-star-fill text-sm"></i>
-                </div>
-                <p class="text-on-surface-variant text-sm italic mb-6 leading-relaxed">"We replaced three different tools with LINKINGROAD. The unified inbox and AI routing saves our team 20 hours a week."</p>
-                <div class="font-bold text-on-surface text-sm">Michael Ross</div>
-                <div class="text-xs text-on-surface-variant">VP Marketing, EcomLabs</div>
-            </div>
-        </div>
-    </section>
+  
 
-    {{-- ─── 8. FAQ ─────────────────────────────────────────────── --}}
-    <section id="faq" x-data="{ active: null }" class="max-w-4xl mx-auto px-5 md:px-6 py-24 border-t border-white/5">
-        <div class="text-center mb-12">
-            <h2 class="font-bold text-3xl text-on-surface mb-3 flex items-center justify-center gap-2">
-                <i class="ri-questionnaire-fill text-primary-container"></i> Frequently Asked Questions
-            </h2>
-            <p class="text-on-surface-variant text-sm">Everything you need to know about the product and automation platform.</p>
-        </div>
-        <div class="space-y-4">
-            <div class="bento-card glass-card rounded-2xl border border-white/5 overflow-hidden">
-                <button @click="active = (active === 1 ? null : 1)" class="w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none">
-                    <span class="font-bold text-on-surface text-base sm:text-lg flex items-center gap-2">
-                        <i class="ri-question-line text-primary"></i> What happens if I hit my automation limits?
-                    </span>
-                    <i class="ri-arrow-down-s-line text-2xl text-primary transform transition-transform duration-300" :class="{ 'rotate-180': active === 1 }"></i>
-                </button>
-                <div x-show="active === 1" x-cloak class="px-6 pb-6 text-sm text-on-surface-variant border-t border-white/5 pt-4 leading-relaxed">
-                    If you exceed your monthly automation limit, we'll notify you via email. Automations will continue to run for an overage fee, or you can upgrade your plan at any time.
-                </div>
-            </div>
-            <div class="bento-card glass-card rounded-2xl border border-white/5 overflow-hidden">
-                <button @click="active = (active === 2 ? null : 2)" class="w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none">
-                    <span class="font-bold text-on-surface text-base sm:text-lg flex items-center gap-2">
-                        <i class="ri-shield-check-line text-secondary"></i> Is it safe to use with my Instagram account?
-                    </span>
-                    <i class="ri-arrow-down-s-line text-2xl text-primary transform transition-transform duration-300" :class="{ 'rotate-180': active === 2 }"></i>
-                </button>
-                <div x-show="active === 2" x-cloak class="px-6 pb-6 text-sm text-on-surface-variant border-t border-white/5 pt-4 leading-relaxed">
-                    Yes! LINKINGROAD uses 100% official, Meta-approved APIs with built-in rate limit pacing to keep your accounts completely safe and fully compliant.
-                </div>
-            </div>
-            <div class="bento-card glass-card rounded-2xl border border-white/5 overflow-hidden">
-                <button @click="active = (active === 3 ? null : 3)" class="w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none">
-                    <span class="font-bold text-on-surface text-base sm:text-lg flex items-center gap-2">
-                        <i class="ri-links-line text-tertiary"></i> Can I connect my own CRM?
-                    </span>
-                    <i class="ri-arrow-down-s-line text-2xl text-primary transform transition-transform duration-300" :class="{ 'rotate-180': active === 3 }"></i>
-                </button>
-                <div x-show="active === 3" x-cloak class="px-6 pb-6 text-sm text-on-surface-variant border-t border-white/5 pt-4 leading-relaxed">
-                    Yes, we offer native integrations with HubSpot, Salesforce, ActiveCampaign, as well as Webhooks and Zapier for custom workflows.
-                </div>
-            </div>
-            <div class="bento-card glass-card rounded-2xl border border-white/5 overflow-hidden">
-                <button @click="active = (active === 4 ? null : 4)" class="w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none">
-                    <span class="font-bold text-on-surface text-base sm:text-lg flex items-center gap-2">
-                        <i class="ri-code-s-slash-line text-primary"></i> Do I need coding skills to build workflows?
-                    </span>
-                    <i class="ri-arrow-down-s-line text-2xl text-primary transform transition-transform duration-300" :class="{ 'rotate-180': active === 4 }"></i>
-                </button>
-                <div x-show="active === 4" x-cloak class="px-6 pb-6 text-sm text-on-surface-variant border-t border-white/5 pt-4 leading-relaxed">
-                    Zero coding required. Our visual drag-and-drop workflow canvas makes building complex automations simple and intuitive for anyone.
-                </div>
-            </div>
-        </div>
-    </section>
 
  
 
