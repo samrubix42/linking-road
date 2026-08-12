@@ -1,5 +1,16 @@
 <div class="py-24 space-y-12 max-w-[1200px] mx-auto px-5 md:px-8">
 
+    <!-- Scrollbar suppression styles -->
+    <style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+
     <!-- Hero Section -->
     <div class="text-center max-w-2xl mx-auto space-y-4">
         <span class="inline-flex items-center gap-1.5 rounded bg-primary-container/10 px-2.5 py-0.5 text-xs font-bold text-primary border border-primary-container/10">
@@ -17,28 +28,30 @@
     <div class="space-y-6 pt-4 border-t border-white/5">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             
-            <!-- Category Pills -->
-            <div class="flex flex-wrap items-center gap-2">
-                <button wire:click="selectCategory(null)" 
-                        class="rounded-full px-4 py-1.5 text-xs font-semibold border transition-all cursor-pointer
-                            {{ is_null($selectedCategory) 
-                                ? 'bg-primary-container text-on-primary-container border-primary-container' 
-                                : 'bg-white/5 border-white/5 text-on-surface-variant hover:text-on-surface hover:bg-white/10' }}">
-                    All Topics
-                </button>
-                @foreach($this->categories as $cat)
-                    <button wire:click="selectCategory({{ $cat->id }})" 
-                            class="rounded-full px-4 py-1.5 text-xs font-semibold border transition-all cursor-pointer
-                                {{ $selectedCategory === $cat->id 
+            <!-- Category Swiper Row -->
+            <div class="w-full overflow-x-auto no-scrollbar -mx-5 px-5 pb-1 md:pb-0 md:-mx-0 md:px-0 scroll-smooth">
+                <div class="flex items-center gap-2 whitespace-nowrap">
+                    <button wire:click="selectCategory(null)" 
+                            class="shrink-0 rounded-full px-4 py-1.5 text-xs font-semibold border transition-all cursor-pointer
+                                {{ is_null($selectedCategory) 
                                     ? 'bg-primary-container text-on-primary-container border-primary-container' 
                                     : 'bg-white/5 border-white/5 text-on-surface-variant hover:text-on-surface hover:bg-white/10' }}">
-                        {{ $cat->name }}
+                        All Topics
                     </button>
-                @endforeach
+                    @foreach($this->categories as $cat)
+                        <button wire:click="selectCategory({{ $cat->id }})" 
+                                class="shrink-0 rounded-full px-4 py-1.5 text-xs font-semibold border transition-all cursor-pointer
+                                    {{ $selectedCategory === $cat->id 
+                                        ? 'bg-primary-container text-on-primary-container border-primary-container' 
+                                        : 'bg-white/5 border-white/5 text-on-surface-variant hover:text-on-surface hover:bg-white/10' }}">
+                            {{ $cat->name }}
+                        </button>
+                    @endforeach
+                </div>
             </div>
 
             <!-- Search input -->
-            <div class="relative w-full md:w-80">
+            <div class="relative w-full md:w-80 shrink-0">
                 <i class="ri-search-2-line absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant/50 text-xs"></i>
                 <input type="text" 
                        wire:model.live.debounce.300ms="search" 
@@ -75,7 +88,7 @@
                 <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
                     <div class="space-y-2">
                         <div class="flex items-center justify-between text-[10px] font-semibold text-on-surface-variant/60">
-                            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-secondary-container/10 text-secondary border border-secondary-container/5">
+                            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-secondary-container/10 text-secondary border border-secondary-container/5 font-bold">
                                 {{ $blog->category->name ?? 'Uncategorized' }}
                             </span>
                             <span class="font-mono">{{ $blog->created_at->format('M d, Y') }}</span>

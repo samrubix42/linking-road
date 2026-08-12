@@ -166,3 +166,28 @@ test('admin can upload a feature image directly in the create blog form', functi
 
     Storage::disk('public')->assertExists('blog_images/'.$file->hashName());
 });
+
+test('public guest can render blog listing page', function () {
+    $this->get('/blog')
+        ->assertStatus(200)
+        ->assertSee('The LINKINGROAD Blog');
+});
+
+test('public guest can render blog view details page', function () {
+    $category = BlogCategory::create(['name' => 'Tech', 'slug' => 'tech', 'is_active' => true]);
+    $blog = Blog::create([
+        'title' => 'Rendering Details Guide',
+        'slug' => 'rendering-details-guide',
+        'category_id' => $category->id,
+        'content' => 'Please visit <a href="https://linkingroad.com">LINKINGROAD</a> to start DMs.',
+        'image' => '/storage/blog_images/test.jpg',
+        'meta_title' => 'SEO Title',
+        'meta_description' => 'SEO Desc',
+        'is_active' => true,
+    ]);
+
+    $this->get("/blog/{$blog->slug}")
+        ->assertStatus(200)
+        ->assertSee('Rendering Details Guide')
+        ->assertSee('Back to all articles');
+});
