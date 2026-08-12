@@ -14,10 +14,10 @@
     <!-- Hero Section -->
     <div class="text-center max-w-2xl mx-auto space-y-4">
         <span class="inline-flex items-center gap-1.5 rounded bg-primary-container/10 px-2.5 py-0.5 text-xs font-bold text-primary border border-primary-container/10">
-            <i class="ri-article-line"></i> Blog & Insights
+            <i class="ri-article-line"></i> Article & Insights
         </span>
         <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-on-surface">
-            The <span class="gradient-text italic font-black">LINKINGROAD</span> Blog
+            The <span class="gradient-text italic font-black">LINKINGROAD</span> Article
         </h1>
         <p class="text-sm text-on-surface-variant/75 leading-relaxed">
             Expert strategies on social automation, official Meta API rules, DM marketing funnels, and comments-to-sales optimization.

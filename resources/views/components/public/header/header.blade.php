@@ -13,7 +13,7 @@
             <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors" href="{{ route('home') }}#solutions">Features</a>
             <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors" href="{{ route('home') }}#solutions">Solutions</a>
             <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors" href="{{ route('home') }}#case-studies">Case Studies</a>
-            <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors {{ request()->routeIs('blog*') ? 'text-primary' : '' }}" href="{{ route('blog') }}">Blog</a>
+            <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors {{ request()->routeIs('blog*') ? 'text-primary' : '' }}" href="{{ route('blog') }}">Article</a>
         </nav>
 
         {{-- Desktop CTA --}}
