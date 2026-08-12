@@ -12,27 +12,33 @@ new #[Layout('layouts::admin')] #[Title('Blog Image Management | LINKINGROAD')] 
 {
     use WithFileUploads;
 
-    public $photo;
+    public array $photos = [];
 
     /**
-     * Handle the file upload.
+     * Handle the multiple files upload.
      */
     public function save(): void
     {
         $this->validate([
-            'photo' => ['required', 'image', 'max:5120'], // Max 5MB
+            'photos.*' => ['required', 'image', 'max:5120'], // Max 5MB per image
         ]);
 
-        $storedName = $this->photo->store('blog_images', 'public');
-        $publicUrl = '/storage/'.$storedName;
+        $uploadedCount = 0;
 
-        BlogImages::create([
-            'image_link' => $publicUrl,
-        ]);
+        foreach ($this->photos as $photo) {
+            $storedName = $photo->store('blog_images', 'public');
+            $publicUrl = '/storage/'.$storedName;
 
-        $this->reset('photo');
+            BlogImages::create([
+                'image_link' => $publicUrl,
+            ]);
 
-        $this->dispatch('toast', message: 'Image uploaded successfully!', type: 'success');
+            $uploadedCount++;
+        }
+
+        $this->reset('photos');
+
+        $this->dispatch('toast', message: "{$uploadedCount} images uploaded successfully!", type: 'success');
     }
 
     /**

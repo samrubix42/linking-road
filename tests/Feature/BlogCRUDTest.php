@@ -4,6 +4,8 @@ use App\Models\Blog;
 use App\Models\BlogCategory;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Livewire;
 
 uses(RefreshDatabase::class);
@@ -122,4 +124,45 @@ test('admin can delete a blog post', function () {
     $this->assertDatabaseMissing('blogs', [
         'id' => $blog->id,
     ]);
+});
+
+test('admin can upload multiple images via livewire', function () {
+    Storage::fake('public');
+
+    $file1 = UploadedFile::fake()->image('image1.jpg');
+    $file2 = UploadedFile::fake()->image('image2.jpg');
+
+    Livewire::test('admin::blog.image-list')
+        ->set('photos', [$file1, $file2])
+        ->call('save')
+        ->assertHasNoErrors()
+        ->assertSet('photos', []);
+
+    $this->assertDatabaseHas('blog_images', [
+        'image_link' => '/storage/blog_images/'.$file1->hashName(),
+    ]);
+
+    $this->assertDatabaseHas('blog_images', [
+        'image_link' => '/storage/blog_images/'.$file2->hashName(),
+    ]);
+
+    Storage::disk('public')->assertExists('blog_images/'.$file1->hashName());
+    Storage::disk('public')->assertExists('blog_images/'.$file2->hashName());
+});
+
+test('admin can upload a feature image directly in the create blog form', function () {
+    Storage::fake('public');
+
+    $file = UploadedFile::fake()->image('feature_image.jpg');
+
+    Livewire::test('admin::blog.add')
+        ->set('photoUpload', $file)
+        ->assertSet('image', '/storage/blog_images/'.$file->hashName())
+        ->assertSet('photoUpload', null);
+
+    $this->assertDatabaseHas('blog_images', [
+        'image_link' => '/storage/blog_images/'.$file->hashName(),
+    ]);
+
+    Storage::disk('public')->assertExists('blog_images/'.$file->hashName());
 });

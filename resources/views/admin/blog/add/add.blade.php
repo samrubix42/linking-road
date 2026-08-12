@@ -1,30 +1,30 @@
 <div class="space-y-6">
     <!-- Top Action bar -->
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-3 border-b border-white/5">
         <div>
-            <h1 class="text-2xl font-extrabold text-on-surface tracking-tight">Create Blog Post</h1>
-            <p class="text-xs text-on-surface-variant/75 mt-1">Publish a new article to your blog.</p>
+            <h1 class="text-xl font-bold text-on-surface tracking-tight">Create Blog Post</h1>
+            <p class="text-xs text-on-surface-variant/60 mt-1">Publish a new article to your blog.</p>
         </div>
         <div>
             <a href="{{ route('admin.blogs') }}" 
-               class="inline-flex items-center gap-2 rounded-xl border border-white/8 bg-transparent px-4 py-2.5 text-xs font-bold text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all">
+               class="inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-transparent px-3.5 py-2 text-xs font-semibold text-on-surface hover:bg-white/5 transition-all">
                 <i class="ri-arrow-left-line text-sm"></i> Back to list
             </a>
         </div>
     </div>
 
-    <!-- Create Form -->
-    <div class="rounded-2xl glass-card border border-white/8 p-6 md:p-8">
-        <form wire:submit.prevent="save" class="space-y-6">
-            <div class="grid gap-6 md:grid-cols-2">
+    <!-- Create Form Card -->
+    <div class="rounded-lg border border-white/5 bg-[#141718] p-5 md:p-6 shadow-md">
+        <form wire:submit.prevent="save" class="space-y-5">
+            <div class="grid gap-5 md:grid-cols-2">
                 <!-- Title -->
                 <div class="space-y-1.5">
-                    <label for="title" class="text-[11px] font-bold uppercase tracking-wider text-on-surface-variant/80">Article Title</label>
+                    <label for="title" class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant/80">Article Title</label>
                     <input type="text" 
                            id="title"
                            wire:model.live="title"
                            placeholder="e.g. How to Automate Instagram Comments" 
-                           class="w-full bg-white/[0.02] border border-white/8 rounded-xl px-4 py-2.5 text-xs text-on-surface focus:border-primary-container focus:outline-none focus:ring-0 transition-colors"
+                           class="w-full bg-white/[0.01] border border-white/10 rounded-md px-3 py-2 text-xs text-on-surface focus:border-primary-container focus:outline-none focus:ring-0 transition-colors"
                            required>
                     @error('title')
                         <span class="text-[10px] font-semibold text-red-400 block mt-1"><i class="ri-error-warning-line"></i> {{ $message }}</span>
@@ -33,27 +33,27 @@
 
                 <!-- Slug -->
                 <div class="space-y-1.5">
-                    <label for="slug" class="text-[11px] font-bold uppercase tracking-wider text-on-surface-variant/80">Slug / URL Identifier</label>
+                    <label for="slug" class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant/80">Slug / URL Identifier</label>
                     <input type="text" 
                            id="slug"
                            wire:model="slug"
                            placeholder="e.g. how-to-automate-instagram-comments" 
-                           class="w-full bg-white/[0.02] border border-white/8 rounded-xl px-4 py-2.5 text-xs text-on-surface focus:border-primary-container focus:outline-none focus:ring-0 transition-colors"
+                           class="w-full bg-white/[0.01] border border-white/10 rounded-md px-3 py-2 text-xs text-on-surface focus:border-primary-container focus:outline-none focus:ring-0 transition-colors"
                            required>
-                    <span class="text-[9px] text-on-surface-variant/50 leading-relaxed block mt-1">Generates automatically from title, but can be customized.</span>
+                    <span class="text-[9px] text-on-surface-variant/40 leading-relaxed block mt-0.5 font-sans">Generates automatically, but customizable.</span>
                     @error('slug')
                         <span class="text-[10px] font-semibold text-red-400 block mt-1"><i class="ri-error-warning-line"></i> {{ $message }}</span>
                     @enderror
                 </div>
             </div>
 
-            <div class="grid gap-6 md:grid-cols-2">
+            <div class="grid gap-5 md:grid-cols-2">
                 <!-- Category -->
                 <div class="space-y-1.5">
-                    <label for="category_id" class="text-[11px] font-bold uppercase tracking-wider text-on-surface-variant/80">Category</label>
+                    <label for="category_id" class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant/80">Category</label>
                     <select id="category_id" 
                             wire:model="category_id"
-                            class="w-full bg-surface-container border border-white/8 rounded-xl px-4 py-2.5 text-xs text-on-surface focus:border-primary-container focus:outline-none focus:ring-0 transition-colors"
+                            class="w-full bg-surface-container border border-white/10 rounded-md px-3 py-2 text-xs text-on-surface focus:border-primary-container focus:outline-none focus:ring-0 transition-colors"
                             required>
                         <option value="">-- Select Category --</option>
                         @foreach($this->categories as $cat)
@@ -65,21 +65,57 @@
                     @enderror
                 </div>
 
-                <!-- Image URL -->
-                <div class="space-y-1.5">
+                <!-- Feature Image -->
+                <div class="space-y-1.5" 
+                     x-data="{ uploading: false, progress: 0 }"
+                     x-on:livewire-upload-start="uploading = true"
+                     x-on:livewire-upload-finish="uploading = false"
+                     x-on:livewire-upload-error="uploading = false"
+                     x-on:livewire-upload-progress="progress = $event.detail.progress">
+                    
                     <div class="flex items-center justify-between">
-                        <label for="image" class="text-[11px] font-bold uppercase tracking-wider text-on-surface-variant/80">Feature Image Link</label>
-                        <a href="{{ route('admin.blogs.images') }}" target="_blank" class="text-[10px] font-bold text-primary hover:underline flex items-center gap-0.5">
-                            <i class="ri-upload-cloud-2-line"></i> Upload & Copy Link
-                        </a>
+                        <label class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant/80">Feature Image</label>
                     </div>
-                    <input type="text" 
-                           id="image"
-                           wire:model="image"
-                           placeholder="Paste URL (e.g. /storage/blog_images/image.jpg)" 
-                           class="w-full bg-white/[0.02] border border-white/8 rounded-xl px-4 py-2.5 text-xs text-on-surface focus:border-primary-container focus:outline-none focus:ring-0 transition-colors"
-                           required>
+
+                    <!-- Direct Upload Dropzone -->
+                    <div class="relative border border-dashed border-white/10 rounded-md p-4 bg-white/[0.005] hover:bg-white/[0.02] flex flex-col items-center justify-center cursor-pointer transition-colors text-center text-[11px] min-h-[70px]">
+                        <input type="file" 
+                               wire:model="photoUpload" 
+                               id="feature-photo-upload"
+                               class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" 
+                               accept="image/*">
+                        <div class="flex flex-col items-center gap-1.5 text-on-surface-variant/60">
+                            <i class="ri-upload-cloud-2-line text-lg text-primary"></i>
+                            <span>Click or drag image file to upload</span>
+                        </div>
+                    </div>
+
+                    <!-- Selected Image Preview -->
+                    @if($image)
+                        <div class="mt-2 flex items-center gap-2.5 p-2 rounded-md border border-white/5 bg-white/[0.005]">
+                            <div class="h-8 w-12 rounded border border-white/10 overflow-hidden bg-black/10 shrink-0">
+                                <img src="{{ asset($image) }}" class="h-full w-full object-cover" />
+                            </div>
+                            <span class="text-[10px] text-on-surface-variant/70 truncate">{{ basename($image) }}</span>
+                            <span class="ml-auto text-[9px] font-semibold text-green-400 bg-green-500/10 px-1.5 py-0.5 rounded border border-green-500/10">Selected</span>
+                        </div>
+                    @endif
+
+                    <!-- Progress Bar for direct upload -->
+                    <div x-show="uploading" x-cloak class="space-y-1 mt-1.5">
+                        <div class="flex items-center justify-between text-[9px] font-semibold text-on-surface-variant/80">
+                            <span>Uploading file...</span>
+                            <span x-text="`${progress}%`"></span>
+                        </div>
+                        <div class="w-full bg-white/5 rounded-full h-1 overflow-hidden">
+                            <div class="bg-primary-container h-1 transition-all duration-300" :style="`width: ${progress}%`"></div>
+                        </div>
+                    </div>
+
                     @error('image')
+                        <span class="text-[10px] font-semibold text-red-400 block mt-1"><i class="ri-error-warning-line"></i> Please upload a feature image.</span>
+                    @enderror
+                    @error('photoUpload')
                         <span class="text-[10px] font-semibold text-red-400 block mt-1"><i class="ri-error-warning-line"></i> {{ $message }}</span>
                     @enderror
                 </div>
@@ -87,7 +123,7 @@
 
             <!-- Content (TinyMCE Rich Text Editor) -->
             <div class="space-y-1.5">
-                <label class="text-[11px] font-bold uppercase tracking-wider text-on-surface-variant/80">Blog Content</label>
+                <label class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant/80">Blog Content</label>
                 <div wire:ignore 
                      x-data="{
                          value: @entangle('content'),
@@ -97,7 +133,7 @@
                                  theme: 'silver',
                                  skin: 'oxide-dark',
                                  content_css: 'dark',
-                                 height: 400,
+                                 height: 380,
                                  menubar: false,
                                  plugins: 'lists link code table wordcount',
                                  toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link table code | removeformat',
@@ -122,30 +158,30 @@
                              });
                          }
                      }" class="w-full">
-                    <textarea x-ref="editor" class="w-full bg-white/[0.02] border border-white/8 rounded-xl px-4 py-2.5 text-xs text-on-surface focus:border-primary-container focus:outline-none focus:ring-0"></textarea>
+                    <textarea x-ref="editor" class="w-full bg-white/[0.01] border border-white/10 rounded-md px-3 py-2 text-xs text-on-surface focus:border-primary-container focus:outline-none focus:ring-0"></textarea>
                 </div>
                 @error('content')
                     <span class="text-[10px] font-semibold text-red-400 block mt-1"><i class="ri-error-warning-line"></i> {{ $message }}</span>
                 @enderror
             </div>
 
-            <hr class="border-white/5 my-6">
+            <hr class="border-white/5 my-4">
 
             <!-- SEO Settings -->
             <div class="space-y-4">
-                <h3 class="text-sm font-bold text-on-surface flex items-center gap-1.5">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-on-surface flex items-center gap-1.5">
                     <i class="ri-global-line text-primary"></i> SEO Metadata Settings
                 </h3>
                 
-                <div class="grid gap-6 md:grid-cols-2">
+                <div class="grid gap-5 md:grid-cols-2">
                     <!-- Meta Title -->
                     <div class="space-y-1.5">
-                        <label for="meta_title" class="text-[11px] font-bold uppercase tracking-wider text-on-surface-variant/80">Meta Title</label>
+                        <label for="meta_title" class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant/80">Meta Title</label>
                         <input type="text" 
                                id="meta_title"
                                wire:model="meta_title"
                                placeholder="Article Meta Title for Google Search" 
-                               class="w-full bg-white/[0.02] border border-white/8 rounded-xl px-4 py-2.5 text-xs text-on-surface focus:border-primary-container focus:outline-none focus:ring-0 transition-colors"
+                               class="w-full bg-white/[0.01] border border-white/10 rounded-md px-3 py-2 text-xs text-on-surface focus:border-primary-container focus:outline-none focus:ring-0 transition-colors"
                                required>
                         @error('meta_title')
                             <span class="text-[10px] font-semibold text-red-400 block mt-1"><i class="ri-error-warning-line"></i> {{ $message }}</span>
@@ -154,12 +190,12 @@
 
                     <!-- Meta Description -->
                     <div class="space-y-1.5">
-                        <label for="meta_description" class="text-[11px] font-bold uppercase tracking-wider text-on-surface-variant/80">Meta Description</label>
+                        <label for="meta_description" class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant/80">Meta Description</label>
                         <input type="text" 
                                id="meta_description"
                                wire:model="meta_description"
                                placeholder="Short summary for Google Search snippet..." 
-                               class="w-full bg-white/[0.02] border border-white/8 rounded-xl px-4 py-2.5 text-xs text-on-surface focus:border-primary-container focus:outline-none focus:ring-0 transition-colors"
+                               class="w-full bg-white/[0.01] border border-white/10 rounded-md px-3 py-2 text-xs text-on-surface focus:border-primary-container focus:outline-none focus:ring-0 transition-colors"
                                required>
                         @error('meta_description')
                             <span class="text-[10px] font-semibold text-red-400 block mt-1"><i class="ri-error-warning-line"></i> {{ $message }}</span>
@@ -168,32 +204,32 @@
                 </div>
             </div>
 
-            <hr class="border-white/5 my-6">
+            <hr class="border-white/5 my-4">
 
             <!-- Publish Settings -->
-            <div class="flex items-center justify-between p-4 rounded-xl border border-white/5 bg-white/[0.01]">
+            <div class="flex items-center justify-between p-3.5 rounded-md border border-white/5 bg-white/[0.005]">
                 <div class="space-y-0.5">
-                    <span class="text-xs font-bold text-on-surface">Publish Status</span>
-                    <p class="text-[10px] text-on-surface-variant/60 leading-relaxed">Visible and readable across public blog pages.</p>
+                    <span class="text-xs font-semibold text-on-surface">Publish Status</span>
+                    <p class="text-[10px] text-on-surface-variant/50 leading-relaxed">Visible and readable across public blog pages.</p>
                 </div>
                 <button type="button" 
                         @click="$wire.is_active = !$wire.is_active" 
-                        class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none"
+                        class="relative inline-flex h-5 w-10 shrink-0 cursor-pointer rounded-full border border-transparent transition-colors duration-200 ease-in-out focus:outline-none"
                         :class="$wire.is_active ? 'bg-primary-container' : 'bg-white/10'">
-                    <span class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
+                    <span class="pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow transition duration-200 ease-in-out"
                           :class="$wire.is_active ? 'translate-x-5' : 'translate-x-0'"></span>
                 </button>
             </div>
 
             <!-- Action buttons -->
-            <div class="flex items-center justify-end gap-3 border-t border-white/5 pt-4">
+            <div class="flex items-center justify-end gap-2.5 border-t border-white/5 pt-4">
                 <a href="{{ route('admin.blogs') }}"
-                   class="rounded-xl border border-white/8 bg-transparent px-5 py-2.5 text-xs font-bold text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-200">
+                   class="rounded-md border border-white/10 bg-transparent px-4 py-2 text-xs font-semibold text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all">
                     Cancel
                 </a>
                 <button type="submit" 
                         wire:loading.attr="disabled"
-                        class="inline-flex items-center gap-1.5 rounded-xl bg-primary-container px-6 py-2.5 text-xs font-bold text-on-primary-container hover:scale-[1.02] active:scale-95 transition-all primary-glow disabled:opacity-60">
+                        class="inline-flex items-center gap-1.5 rounded-md bg-primary-container px-5 py-2 text-xs font-bold text-on-primary-container hover:scale-[1.01] active:scale-95 transition-all primary-glow disabled:opacity-60 cursor-pointer">
                     <span wire:loading.remove wire:target="save">Publish Blog Post</span>
                     <span wire:loading wire:target="save" class="flex items-center gap-1">
                         <i class="ri-loader-4-line animate-spin"></i> Publishing...

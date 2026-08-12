@@ -4,19 +4,22 @@
     <div class="flex items-center justify-between h-16 px-5 md:px-8 max-w-[1200px] mx-auto">
 
         {{-- Logo --}}
-        <img alt="LINKINGROAD Logo" class="h-8 w-auto" src="{{ asset('logo.png') }}" />
+        <a href="{{ route('home') }}">
+            <img alt="LINKINGROAD Logo" class="h-8 w-auto" src="{{ asset('logo.png') }}" />
+        </a>
 
         {{-- Desktop Nav --}}
         <nav class="hidden md:flex items-center gap-7">
-            <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors" href="#solutions">Features</a>
-            <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors" href="#solutions">Solutions</a>
-            <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors" href="#case-studies">Case Studies</a>
+            <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors" href="{{ route('home') }}#solutions">Features</a>
+            <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors" href="{{ route('home') }}#solutions">Solutions</a>
+            <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors" href="{{ route('home') }}#case-studies">Case Studies</a>
+            <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors {{ request()->routeIs('blog*') ? 'text-primary' : '' }}" href="{{ route('blog') }}">Blog</a>
         </nav>
 
         {{-- Desktop CTA --}}
         <div class="hidden md:block">
             <a class="bg-secondary-container hover:bg-secondary-container/80 text-on-secondary-container px-5 py-2 rounded-full text-sm font-bold transition-all primary-glow"
-               href="#waitlist">Join Waitlist</a>
+               href="{{ route('home') }}#waitlist">Join Waitlist</a>
         </div>
 
         {{-- Mobile Hamburger Button --}}
@@ -45,13 +48,15 @@
         class="md:hidden absolute top-16 left-0 right-0 w-full bg-surface/95 backdrop-blur-xl border-b border-white/5 shadow-2xl px-5 py-6 flex flex-col gap-2">
 
         <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors py-3 border-b border-white/5 block"
-           href="#solutions" @click="open = false">Features</a>
+           href="{{ route('home') }}#solutions" @click="open = false">Features</a>
         <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors py-3 border-b border-white/5 block"
-           href="#solutions" @click="open = false">Solutions</a>
+           href="{{ route('home') }}#solutions" @click="open = false">Solutions</a>
         <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors py-3 border-b border-white/5 block"
-           href="#case-studies" @click="open = false">Case Studies</a>
+           href="{{ route('home') }}#case-studies" @click="open = false">Case Studies</a>
+        <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors py-3 border-b border-white/5 block {{ request()->routeIs('blog*') ? 'text-primary' : '' }}"
+           href="{{ route('blog') }}" @click="open = false">Blog</a>
         <a class="bg-primary-container text-on-primary-container px-5 py-3 rounded-xl text-sm font-bold text-center hover:scale-[1.01] transition-transform primary-glow mt-3 block"
-           href="#waitlist" @click="open = false">Join Waitlist</a>
+           href="{{ route('home') }}#waitlist" @click="open = false">Join Waitlist</a>
 
     </div>
 

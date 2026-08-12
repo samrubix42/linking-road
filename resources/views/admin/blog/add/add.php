@@ -2,14 +2,18 @@
 
 use App\Models\Blog;
 use App\Models\BlogCategory;
+use App\Models\BlogImages;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 new #[Layout('layouts::admin')] #[Title('Create Blog Post | LINKINGROAD')] class extends Component
 {
+    use WithFileUploads;
+
     public string $title = '';
 
     public ?int $category_id = null;
@@ -26,6 +30,9 @@ new #[Layout('layouts::admin')] #[Title('Create Blog Post | LINKINGROAD')] class
 
     public bool $is_active = true;
 
+    // Temporary upload property
+    public $photoUpload;
+
     /**
      * Auto-slugify on title update.
      */
@@ -35,6 +42,31 @@ new #[Layout('layouts::admin')] #[Title('Create Blog Post | LINKINGROAD')] class
         if ($this->meta_title === '') {
             $this->meta_title = $value;
         }
+    }
+
+    /**
+     * Handle direct image file upload.
+     */
+    public function updatedPhotoUpload(): void
+    {
+        $this->validate([
+            'photoUpload' => ['image', 'max:5120'], // Max 5MB
+        ]);
+
+        $storedName = $this->photoUpload->store('blog_images', 'public');
+        $publicUrl = '/storage/'.$storedName;
+
+        // Auto-fill the image URL input field
+        $this->image = $publicUrl;
+
+        // Log the image in the gallery so it's reuseable
+        BlogImages::create([
+            'image_link' => $publicUrl,
+        ]);
+
+        $this->reset('photoUpload');
+
+        $this->dispatch('toast', message: 'Feature image uploaded successfully!', type: 'success');
     }
 
     /**
