@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home4/mobiyqdc/gray.brandcreatr.com/
+    - export DEPLOYPATH=/home3/mobiyuln/linkingroad.io/
     - /bin/cp -R * $DEPLOYPATH 
