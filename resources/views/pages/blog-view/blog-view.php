@@ -24,15 +24,6 @@ new #[Layout('layouts::app')] class extends Component
     }
 
     /**
-     * Dynamic title.
-     */
-    public function rendering(): void
-    {
-        $title = ($this->blog->meta_title ?? $this->blog->title).' | LINKINGROAD Blog';
-        $this->dispatch('update-title', title: $title);
-    }
-
-    /**
      * Get related/recent posts.
      */
     #[Computed]

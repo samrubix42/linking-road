@@ -1,3 +1,6 @@
+@section('meta_title', ($blog->meta_title ?? $blog->title) . ' | LINKINGROAD Blog')
+@section('meta_description', $blog->meta_description ?? Str::limit(strip_tags($blog->content), 160, '...'))
+
 <div class="py-24 space-y-12 max-w-[1200px] mx-auto px-5 md:px-8">
 
     <!-- CSS Typography and Link overrides -->

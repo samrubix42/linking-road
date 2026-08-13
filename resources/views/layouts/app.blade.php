@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta name="description"
-        content="LINKINGROAD — The ultimate AI social automation platform. Turn every Instagram & Facebook comment into revenue with AI-powered comment-to-DM automation.">
+        content="@yield('meta_description', 'LINKINGROAD — The ultimate AI social automation platform. Turn every Instagram & Facebook comment into revenue with AI-powered comment-to-DM automation.')">
 
     <meta name="theme-color" content="#111415">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title"
-        content="{{ $title ?? 'LINKINGROAD | Turn Every Comment Into Revenue' }}">
+        content="@yield('meta_title', $title ?? 'LINKINGROAD | Turn Every Comment Into Revenue')">
     <meta property="og:description"
-        content="Automate Instagram and Facebook comment-to-DM engagement effortlessly with official Meta APIs.">
+        content="@yield('meta_description', 'Automate Instagram and Facebook comment-to-DM engagement effortlessly with official Meta APIs.')">
     <meta property="og:url"
         content="{{ url()->current() }}">
 
-    <title>{{ $title ?? 'LINKINGROAD | Turn Every Comment Into Revenue' }}</title>
+    <title>@yield('meta_title', $title ?? 'LINKINGROAD | Turn Every Comment Into Revenue')</title>
 
     <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

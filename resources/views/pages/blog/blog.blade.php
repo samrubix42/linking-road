@@ -1,3 +1,6 @@
+@section('meta_title', 'LINKINGROAD Blog - Industry Insights & AI Marketing Automation')
+@section('meta_description', 'Expert strategies on social automation, official Meta API rules, DM marketing funnels, and comments-to-sales optimization.')
+
 <div class="py-24 space-y-12 max-w-[1200px] mx-auto px-5 md:px-8">
 
     <!-- Scrollbar suppression styles -->
