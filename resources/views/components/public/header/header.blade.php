@@ -12,8 +12,7 @@
         <nav class="hidden md:flex items-center gap-7">
             <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors" href="{{ route('home') }}#solutions">Features</a>
             <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors" href="{{ route('home') }}#solutions">Solutions</a>
-            <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors" href="{{ route('home') }}#case-studies">Case Studies</a>
-            <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors {{ request()->routeIs('blog*') ? 'text-primary' : '' }}" href="{{ route('blog') }}">Article</a>
+            <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors {{ request()->routeIs('blog*') ? 'text-primary' : '' }}" href="{{ route('blog') }}">Articles</a>
         </nav>
 
         {{-- Desktop CTA --}}
@@ -51,10 +50,9 @@
            href="{{ route('home') }}#solutions" @click="open = false">Features</a>
         <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors py-3 border-b border-white/5 block"
            href="{{ route('home') }}#solutions" @click="open = false">Solutions</a>
-        <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors py-3 border-b border-white/5 block"
-           href="{{ route('home') }}#case-studies" @click="open = false">Case Studies</a>
+        
         <a class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors py-3 border-b border-white/5 block {{ request()->routeIs('blog*') ? 'text-primary' : '' }}"
-           href="{{ route('blog') }}" @click="open = false">Blog</a>
+           href="{{ route('blog') }}" @click="open = false">Articles</a>
         <a class="bg-primary-container text-on-primary-container px-5 py-3 rounded-xl text-sm font-bold text-center hover:scale-[1.01] transition-transform primary-glow mt-3 block"
            href="{{ route('home') }}#waitlist" @click="open = false">Join Waitlist</a>
 

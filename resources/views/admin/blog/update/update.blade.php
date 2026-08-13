@@ -201,6 +201,20 @@
                             <span class="text-[10px] font-semibold text-red-400 block mt-1"><i class="ri-error-warning-line"></i> {{ $message }}</span>
                         @enderror
                     </div>
+
+                    <!-- Meta Keywords -->
+                    <div class="space-y-1.5 md:col-span-2">
+                        <label for="meta_keywords" class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant/80">Meta Keywords</label>
+                        <input type="text" 
+                               id="meta_keywords"
+                               wire:model="meta_keywords"
+                               placeholder="e.g. instagram automation, dm funnel, meta api (comma-separated)" 
+                               class="w-full bg-white/[0.01] border border-white/10 rounded-md px-3 py-2 text-xs text-on-surface focus:border-primary-container focus:outline-none focus:ring-0 transition-colors">
+                        <span class="text-[9px] text-on-surface-variant/40 leading-relaxed block mt-0.5 font-sans">Separate keywords with commas for SEO optimization.</span>
+                        @error('meta_keywords')
+                            <span class="text-[10px] font-semibold text-red-400 block mt-1"><i class="ri-error-warning-line"></i> {{ $message }}</span>
+                        @enderror
+                    </div>
                 </div>
             </div>
 

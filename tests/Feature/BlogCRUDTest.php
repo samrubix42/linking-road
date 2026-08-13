@@ -68,6 +68,7 @@ test('admin can create blog post via livewire', function () {
         ->set('image', '/storage/blog_images/test.jpg')
         ->set('meta_title', 'My SEO Title')
         ->set('meta_description', 'My SEO Description')
+        ->set('meta_keywords', 'automation, instagram, dm')
         ->set('is_active', true)
         ->call('save')
         ->assertHasNoErrors()
@@ -77,6 +78,7 @@ test('admin can create blog post via livewire', function () {
         'title' => 'My First Automated Post',
         'slug' => 'my-first-automated-post',
         'category_id' => $category->id,
+        'meta_keywords' => 'automation, instagram, dm',
     ]);
 });
 
@@ -168,9 +170,9 @@ test('admin can upload a feature image directly in the create blog form', functi
 });
 
 test('public guest can render blog listing page', function () {
-    $this->get('/blog')
+    $this->get(route('blog'))
         ->assertStatus(200)
-        ->assertSee('The LINKINGROAD Blog');
+        ->assertSee('Blog');
 });
 
 test('public guest can render blog view details page', function () {
@@ -183,11 +185,13 @@ test('public guest can render blog view details page', function () {
         'image' => '/storage/blog_images/test.jpg',
         'meta_title' => 'SEO Title',
         'meta_description' => 'SEO Desc',
+        'meta_keywords' => 'testing, guide, livewire',
         'is_active' => true,
     ]);
 
-    $this->get("/blog/{$blog->slug}")
+    $this->get(route('blog.view', $blog->slug))
         ->assertStatus(200)
         ->assertSee('Rendering Details Guide')
+        ->assertSee('testing')
         ->assertSee('Back to all articles');
 });

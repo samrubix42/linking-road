@@ -1,5 +1,8 @@
 @section('meta_title', ($blog->meta_title ?? $blog->title) . ' | LINKINGROAD Blog')
 @section('meta_description', $blog->meta_description ?? Str::limit(strip_tags($blog->content), 160, '...'))
+@if(!empty($blog->meta_keywords))
+@section('meta_keywords', $blog->meta_keywords)
+@endif
 
 <div class="py-24 space-y-12 max-w-[1200px] mx-auto px-5 md:px-8">
 
@@ -107,6 +110,24 @@
                 <div class="blog-content pt-4">
                     {!! $blog->content !!}
                 </div>
+
+                <!-- Article Meta Keywords -->
+                @if(!empty($blog->meta_keywords))
+                    <div class="pt-6 border-t border-white/5 space-y-2">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant/50 font-mono flex items-center gap-1">
+                            <i class="ri-price-tag-3-line text-primary"></i> Keywords
+                        </span>
+                        <div class="flex flex-wrap gap-2">
+                            @foreach(array_map('trim', explode(',', $blog->meta_keywords)) as $keyword)
+                                @if(!empty($keyword))
+                                    <span class="px-2.5 py-1 rounded bg-white/[0.03] text-on-surface-variant/80 border border-white/10 text-xs font-medium hover:border-white/20 transition-colors">
+                                        {{ $keyword }}
+                                    </span>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
             </article>
         </div>
 

@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
     'image',
     'meta_title',
     'meta_description',
+    'meta_keywords',
     'is_active',
 ])]
 class Blog extends Model

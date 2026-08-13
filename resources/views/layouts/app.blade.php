@@ -6,6 +6,9 @@
 
     <meta name="description"
         content="@yield('meta_description', 'LINKINGROAD — The ultimate AI social automation platform. Turn every Instagram & Facebook comment into revenue with AI-powered comment-to-DM automation.')">
+    @if(View::hasSection('meta_keywords'))
+    <meta name="keywords" content="@yield('meta_keywords')">
+    @endif
 
     <meta name="theme-color" content="#111415">
 

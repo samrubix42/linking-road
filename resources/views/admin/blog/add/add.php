@@ -28,6 +28,8 @@ new #[Layout('layouts::admin')] #[Title('Create Blog Post | LINKINGROAD')] class
 
     public string $meta_description = '';
 
+    public string $meta_keywords = '';
+
     public bool $is_active = true;
 
     // Temporary upload property
@@ -91,6 +93,7 @@ new #[Layout('layouts::admin')] #[Title('Create Blog Post | LINKINGROAD')] class
             'image' => ['required', 'string'],
             'meta_title' => ['required', 'string', 'max:255'],
             'meta_description' => ['required', 'string', 'max:500'],
+            'meta_keywords' => ['nullable', 'string', 'max:500'],
             'is_active' => ['required', 'boolean'],
         ];
 
@@ -104,6 +107,7 @@ new #[Layout('layouts::admin')] #[Title('Create Blog Post | LINKINGROAD')] class
             'image' => $this->image,
             'meta_title' => $this->meta_title,
             'meta_description' => $this->meta_description,
+            'meta_keywords' => $this->meta_keywords,
             'is_active' => $this->is_active,
         ]);
 

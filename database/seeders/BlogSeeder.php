@@ -55,6 +55,7 @@ class BlogSeeder extends Seeder
                 'image' => 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop',
                 'meta_title' => 'Building Comment-to-DM Funnels | LINKINGROAD',
                 'meta_description' => 'Discover how to skyrocket social conversion rates by converting comments directly into Instagram DMs using automated funnels.',
+                'meta_keywords' => 'funnel optimization, instagram dm, comment automation, conversion rates',
                 'is_active' => true,
                 'content' => '
                     <p>Marketing funnels are shifting rapidly in 2026. The traditional loop of "click link in bio, navigate to landing page, submit email, check spam folder" is seeing drop-offs of over 85%.</p>
@@ -75,6 +76,7 @@ class BlogSeeder extends Seeder
                 'image' => 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=600&auto=format&fit=crop',
                 'meta_title' => 'Meta API Compliance for DM Automation | LINKINGROAD',
                 'meta_description' => 'Learn how to keep your social accounts safe, compliant, and in Meta good standing using official developer APIs.',
+                'meta_keywords' => 'meta api, compliance, instagram developer api, messenger webhooks',
                 'is_active' => true,
                 'content' => '
                     <p>Automating your social media messaging can generate incredible engagement, but running unauthorized web-scrapers or unofficial API wrappers is a shortcut to getting your page banned.</p>
@@ -96,6 +98,7 @@ class BlogSeeder extends Seeder
                 'image' => 'https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=600&auto=format&fit=crop',
                 'meta_title' => 'ROI Benefits of Coaching Automation | LINKINGROAD',
                 'meta_description' => 'Automate lead qualification, onboarding, and appointment booking so you can focus on building high-value relationships.',
+                'meta_keywords' => 'coaching roi, lead qualification, social automation, appointment booking',
                 'is_active' => true,
                 'content' => '
                     <p>Coaches and service providers spend hours every day replying to Instagram DMs and comment queries manually. Automation changes the game by running qualifying filters before you even touch the keyboard.</p>
@@ -113,6 +116,7 @@ class BlogSeeder extends Seeder
                 'image' => 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600&auto=format&fit=crop',
                 'meta_title' => 'Optimizing DM Chatbot Scripts | LINKINGROAD',
                 'meta_description' => 'A guide to writing natural conversational chatbot copy that builds brand loyalty and drives sales conversions.',
+                'meta_keywords' => 'ai chatbots, conversational copy, dm scripts, copywriting',
                 'is_active' => true,
                 'content' => '
                     <p>Nobody likes chatting with a robotic, cold machine. When scripting your AI DM automations, focusing on high-quality copywriting and natural styling is the key to building trust.</p>
