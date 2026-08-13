@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::livewire('/', 'pages::home')->name('home');
 Route::livewire('/articles', 'pages::blog')->name('blog');
-Route::livewire('/article/{slug}', 'pages::blog-view')->name('blog.view');
+Route::livewire('/articles/{slug}', 'pages::blog-view')->name('blog.view');
 
 Route::middleware('guest')->group(function () {
     Route::livewire('/login', 'auth::login')->name('login');
